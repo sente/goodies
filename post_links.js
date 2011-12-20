@@ -15,7 +15,7 @@ function post_to_url(path, params, method) {
     var form = document.createElement("form");
     form.setAttribute("method", method);
     form.setAttribute("action", path);
-    form.setAttribute("target", "_blank");
+    form.setAttribute("target", "new");
 
     for(var key in params) {
         var textarea = document.createElement("textarea");
