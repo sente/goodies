@@ -1,6 +1,9 @@
 var tables = [];
 
-function extract_msgs(){
+
+
+function extract_msgs(msgtype)
+{
     if(!(inbox && inbox.message_pane_ && inbox.message_pane_.innerHTML)){
         alert("well this is weird....");
     }
@@ -13,9 +16,13 @@ function extract_msgs(){
     }
     else{
         alert("Fininshed crawling:" + tables.length + " pages.");
+        document.write('<form action=http://curl.sente.cc method=POST><textarea name='+msgtype+'.html>'+escape(tables.join('\n'))+'</textarea><input type=submit></form>')
     }
 }
 
-extract_msgs();
+extract_msgs('sent');
+
+
+extract_msgs('inbox');
 
 
