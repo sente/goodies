@@ -3,16 +3,16 @@
         <script src="../get_url_vars.js"></script>
     </head>
     <body>
-        <p>add <code>'?q=town'</code> to the URL</p>
-        <script>
-            document.write(getUrlVars()['q']);
-        </script>
-        <br />
-        <p>add <code>'?q=town&user=stu'</code> to the URL</p>
-        <script>
-            document.write(vars);
-        </script>
-        <br />
-    </body>
+        add <code>'?q=town'</code><br />
 
+        <pre><script>document.write(getUrlVars()['q']);</script></pre>
+
+        <br />
+        <hr />
+
+        add <code>'?q=town&user=stu'</code><br />
+
+        <pre><script>document.write(JSON.stringify(vars,null,1));</script></pre>
+
+    </body>
 </html>
