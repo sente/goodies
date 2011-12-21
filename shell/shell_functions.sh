@@ -9,6 +9,18 @@ get_top_50_uploads()
     done
 }
 
+# prints a two column file like: http://c.sente.cc/d9sf/cps_vids.txt
+show_cp_videos ()
+{
+    for i in people/*;
+    do
+        bb=$(basename $i .videos);
+        cat $i | while read line; do
+            echo $bb $line;
+        done;
+    done
+}
+
 
 
 # get all the related videos for each video_id in <FILE>
@@ -28,3 +40,15 @@ get_user_related_vids ()
 
 
 
+make_links()
+{
+    grep feeds/api/users/ related/*/*json | cut -f4 -d'"' | sort | uniq -c | sort -nr | awk '$1>5' | tr '/' '\t' | awk '{print $1, $7}' | while read a b; do
+        echo "$a,<a href=\"http://www.youtube.com/user/$b\">$b</a><br>";
+    done | postit cps.html
+}
+
+
+find_related_people()
+{
+ find related/*/*json |while read line; do dicter.py $line | cut -c1-100|grep entry|grep author|grep name |cut -f2 -d"'"; done | tee related_people.dat
+}
