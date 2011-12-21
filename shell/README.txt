@@ -47,4 +47,9 @@ get_user_related_vids ()
 
 
 
+#stu@sente.cc $ for jsonfile in related/sentesays/*.json; do python ../show_related_videos.py $jsonfile; done | postit results.txt
+
+# ... created http://c.sente.cc/UNe1/results.txt
+
+
 
