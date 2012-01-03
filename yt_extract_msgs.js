@@ -16,13 +16,20 @@ function extract_msgs(msgtype)
     }
     else{
         alert("Fininshed crawling:" + tables.length + " pages.");
-        document.write('<form action=http://curl.sente.cc method=POST><textarea name='+msgtype+'.html>'+escape(tables.join('\n'))+'</textarea><input type=submit></form>')
+        //document.write('<form action=http://curl.sente.cc method=POST><textarea name='+msgtype+'.html>'+escape(tables.join('\n'))+'</textarea><input type=submit></form>')
     }
 }
 
+
+$inbox = $('a[id^=tab-inbox]')[0];
+$sent = $('a[id^=tab-sent]')[0];
+
+
+inbox.open_folder($sent);
 extract_msgs('sent');
 
 
+inbox.open_folder($inbox);
 extract_msgs('inbox');
 
 
