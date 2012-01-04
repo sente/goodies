@@ -19,9 +19,10 @@ def get_divs_from_files(files):
 
     divs = []
     for f in files:
+        sys.stderr.write('processsing file: %s\n' % f)
+
         bs=BeautifulSoup.BeautifulSoup(open(f,'r'))
         divs.append(bs.find('div',{'id':'search-results'}))
-
     return divs
 
 def prepare_body(divs):
@@ -35,7 +36,6 @@ def prepare_body(divs):
                 h = h.replace('src=','data-thumb=')
                 h = h.replace('ABCTOWN','src=')
             body.append(h)
-
     return body
 
 
@@ -46,8 +46,8 @@ def render_html(body):
             <link id="www-core-css" rel="stylesheet" href="http://s.ytimg.com/yt/cssbin/www-core-vflQBNa2o.css">
             <style>
                 div.search-results { background-color:lightgrey; border:4px; width:600px; }
-                div.result-item { padding:2px; background-color:grey; }
-                div.result-item:hover { background-color:grey; }
+                div.result-item { padding:2px; background-color:lightgrey; }
+                div.result-item:hover { background-color:white; }
             </style>
         </head>
     <body>
